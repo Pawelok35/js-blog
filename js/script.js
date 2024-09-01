@@ -13,12 +13,12 @@
     }
   
     /* [IN PROGRESS] add class 'active' to the clicked link */
-  
+    clickedElement.classList.add('active');
     console.log('clickedElement:', clickedElement);
 
   
     /* [DONE] remove class 'active' from all articles */
-    const activeArticles  = document.querySelectorAll('active');
+    const activeArticles  = document.querySelectorAll('.posts .post.active');
 
     for(let activeArticle of activeArticles ){
         activeArticle.classList.remove('active');
@@ -26,13 +26,6 @@
     }
     
     /* add class 'active' to the clicked link */
-
-    const activeArticles  = document.querySelectorAll('active');
-
-    for(let activeArticle of activeArticles ){
-        activeArticle.classList.remove('active');
-      console.log(activeArticle);
-    }
   
     /* get 'href' attribute from the clicked link */
   
