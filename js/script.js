@@ -54,16 +54,39 @@ for (let link of links) {
     /* remove contents of titleList */
 
     const titleList = document.querySelector(optTitleListSelector);
+
+    // usuwa ze stałej titleList Cała zawartość elementu <ul class="list titles">, 
+    // czyli wszystkie <li> z linkami do artykułów (<li><a href="#article-1" class="active"><span>Article 1</span></a></li> itd.).
     titleList .innerHTML = '';
     
 
-
     /* for each article */
+
+const articles = document.querySelector(optArticleSelector);
+
+for (article of articles){
+   console.log(article);
+}
+
     /* get the article id */
+
+    const articleId = document.getAttribute('id');
+
     /* find the title element */
+    // 1. Znajduje element <h3 class="post-title">Article 1</h3> w danym artykule.
+    // 2. .innerHTML: Pobiera zawartość tego elementu, czyli tekst "Article 1".
+    // 3. articleTitle: Przechowuje ten tekst w zmiennej articleTitle.
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
     /* get the title from the title element */
+   
+
     /* create HTML of the link */
+
+
     /* insert link into titleList */
+
+
   }
 
   generateTitleLinks();
