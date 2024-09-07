@@ -56,6 +56,8 @@ const titleClickHandler = function (event) {
 
 const articles = document.querySelectorAll(optArticleSelector);
 
+let html = '';
+
 for (let article of articles){
    console.log(article);
 
@@ -74,14 +76,18 @@ for (let article of articles){
    
 
     /* create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log(linkHTML);
+    html =html + '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    console.log(html);
 
-    /* insert link into titleList */
-    titleList.innerHTML = titleList.innerHTML + linkHTML;
+     /* create HTML of the link */
+    /* ... */
 
   }
+  /* insert link into titleList */
+  titleList.innerHTML = html;
   }
+
+
   generateTitleLinks();
   // Add click event listeners to links
   const links = document.querySelectorAll('.titles a');
