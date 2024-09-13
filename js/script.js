@@ -34,7 +34,6 @@ const titleClickHandler = function (event) {
   /* add class 'active' to the correct article */
   correctArticle.classList.add('active');
 };
-/////////////////////////////////////////////////////////////////
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
@@ -81,7 +80,7 @@ const links = document.querySelectorAll('.titles a');
 for (let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
-////
+
 function generateTags() {
   /* find all articles */
   const allArticles = document.querySelector(optArticleSelector);
