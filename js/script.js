@@ -83,7 +83,7 @@ for (let link of links) {
 
 function generateTags() {
   /* find all articles */
-  const allArticles = document.querySelector(optArticleSelector);
+  const allArticles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
   for (let article of allArticles) {
     /* find tags wrapper */
@@ -101,10 +101,10 @@ function generateTags() {
     /* START LOOP: for each tag */
     for (let tagArray of articleTagsArray) {
       /* generate HTML of the link */
-      const linkHTMLData = { id: tagArray, title: tagArray };
+      tagHtml = tagHtml + `<a href="#tag-${tagArray}">${tagArray}</a>`;
 
       /* add generated code to html variable */
-      tagHtml = tagHtml + linkHTMLData;
+      
 
       /* END LOOP: for each tag */
     }
