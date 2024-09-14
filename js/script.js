@@ -93,7 +93,7 @@ function generateTags() {
     let tagHtml = '';
 
     /* get tags from data-tags attribute */
-    const articleTags = article.querySelector('data-tags');
+    const articleTags = article.getAttribute('data-tags');
 
     /* split tags into array */
     const articleTagsArray = articleTags.split(' ');
