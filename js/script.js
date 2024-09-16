@@ -104,7 +104,7 @@ function generateTags() {
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
       /* generate HTML of the link */
-      const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      const tagLinkHTML = '<li><a class="tag-link" href="#tag-' + tag + '">' + tag + '</a></li>';
 
       /* add generated code to html variable */
       tagHtml += tagLinkHTML;
@@ -120,6 +120,7 @@ function generateTags() {
 }
 generateTags();
 addClickListenersToTags();
+
 function tagClickHandler(event) {
   /* prevent default action for this event */
   event.preventDefault();

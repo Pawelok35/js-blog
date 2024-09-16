@@ -115,6 +115,10 @@ body {
 .post-tags {
   display: flex;
   p {
-    margin: 0 10px 0 0;
+    margin: 0 10px 0px 0;
   }
+}
+.tag-link {
+  margin-right: 2px; /* Odstęp między tagami */
+ 
 }
