@@ -170,7 +170,7 @@ function generateAuthors() {
   /* START LOOP: for every article: */
   for (let article of articles) {
     /* find author wrapper */
-    const authorWrapper = document.querySelector(optArticleAuthorSelector);
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
     /* get author from data-author attribute */
     const author = article.getAttribute('data-author');
     /* generate HTML of the link (display author as a link) */
