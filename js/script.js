@@ -85,6 +85,23 @@ for (let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
 
+const params = {
+  max: 0,
+  min: 999999,
+};
+
+function calculateTagsParams(tags) {
+  for (let tag in tags) {
+    if (tags[tag] > params.max) {
+      params.max = tags[tag];
+    }
+    if (tags[tag] < params.min) {
+      params.min = tags[tag];
+    }
+  }
+  return params;
+}
+
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
   let allTags = {};
@@ -132,12 +149,15 @@ function generateTags() {
   const tagList = document.querySelector(optTagsListSelector);
 
   /* [NEW] create variable for all links HTML code */
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
   let allTagsHTML = '';
 
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let tag in allTags) {
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a> ';
+    allTagsHTML +=
+      '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a> ';
   }
   /* [NEW] END LOOP: for each tag in allTags: */
 
