@@ -41,7 +41,9 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
   optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-';
+  optCloudClassPrefix = 'tag-size-',
+  optAuthorsListSelector = '.authors.list';
+console.log(optAuthorsListSelector);
 
 function generateTitleLinks(customSelector = '') {
   /* remove contents of titleList */
@@ -177,13 +179,14 @@ function generateTags() {
       '</span></a></li>';
 
     allTagsHTML += tagLinkHTML;
-  }
-  /* [NEW] END LOOP: for each tag in allTags: */
 
+    /* [NEW] END LOOP: for each tag in allTags: */
+  }
   /*[NEW] add HTML from allTagsHTML to tagList */
   tagList.innerHTML = allTagsHTML;
 }
 generateTags();
+
 addClickListenersToTags();
 
 function tagClickHandler(event) {
@@ -231,6 +234,7 @@ function addClickListenersToTags() {
 }
 
 function generateAuthors() {
+  let allAuthors = {};
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
@@ -243,9 +247,35 @@ function generateAuthors() {
     const authorLinkHTML =
       '<li><a href="#author-' + author + '">' + author + '</a></li>';
     /* insert HTML into the author wrapper */
+
+    /* [NEW] check if this link is NOT already in allTags */
+    if (!allAuthors[author]) {
+      /* [NEW] add generated code to allAuthors array */
+      allAuthors[author] = 1;
+    } else {
+      allAuthors[author]++;
+    }
     authorWrapper.innerHTML = authorLinkHTML;
-    /* END LOOP: for every article: */
+
+    /* END LOOP: for every author: */
   }
+  /* [NEW] find list of authors in right column */
+  const authorList = document.querySelector(optAuthorsListSelector);
+
+  let allAuthorsHTML = '';
+  for (let author in allAuthors) {
+    const authorLinkHTML =
+      '<li><a href="#author-' +
+      author +
+      '">' +
+      author +
+      ' (' +
+      allAuthors[author] +
+      ')</a></li>';
+
+    allAuthorsHTML += authorLinkHTML;
+  }
+  authorList.innerHTML = allAuthorsHTML;
 }
 generateAuthors();
 
