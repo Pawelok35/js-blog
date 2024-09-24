@@ -1,8 +1,9 @@
 'use strict';
 const templates = {
-  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+  articleLink: Handlebars.compile(
+    document.querySelector('#template-article-link').innerHTML
+  ),
 };
-
 
 const titleClickHandler = function (event) {
   event.preventDefault();
@@ -244,8 +245,8 @@ function generateAuthors() {
     /* get author from data-author attribute */
     const author = article.getAttribute('data-author');
     /* generate HTML of the link (display author as a link) */
-    const authorLinkHTML =
-      '<li><a href="#author-' + author + '">' + author + '</a></li>';
+    const linkHTMLData = { id: author, title: author };
+    const linkHTML = templates.articleLink(linkHTMLData);
 
     /* [NEW] check if this link is NOT already in allAuthors */
     if (!allAuthors[author]) {
@@ -255,7 +256,7 @@ function generateAuthors() {
       allAuthors[author]++;
     }
     /* insert HTML into the author wrapper */
-    authorWrapper.innerHTML = authorLinkHTML;
+    authorWrapper.innerHTML = linkHTML;
 
     /* END LOOP: for every author: */
   }
